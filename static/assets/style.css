@@ -1,65 +1,203 @@
 h1{
-/*	font-family:"Arial Black", Gadget, sans-serif;*/
-	font-family:"Times New Romans", Gadget, sans-serif;
+/*  font-family: "Arial Black", Gadget, sans-serif;*/
+  font-family: "Times New Romans", Gadget, sans-serif;
 }
 body{
-	color:black;
-	background-color:white;
-	left-margin:10px;
-	right-margin:10px;
+  color: black;
+  background-color: white;
+  left-margin: 10px;
+  right-margin: 10px;
 }
 table{
-	width:95%;
-	border-collapse:collapse;
-	table-layout:fixed;
+  width: 95%;
+  border-collapse: collapse;
+  table-layout: auto;
 }
-td
+
+
+.inputarea
 {
-	border: rgba(224, 119, 70, 1) 2px solid;
-	word-wrap:break-word;
+  display: flex;
+  text-align: center;
+  border: rgba(224, 119, 70, 1) 2px solid;
+  word-wrap: break-word;
+  color: white;
+  background-color: green;
+  justify-content: center;
 }
+
+
+.afterepoch
+{
+  text-align: center;
+  border: rgba(224, 119, 70, 1) 2px solid;
+  word-wrap: break-word;
+  color: white;
+  background-color: blue;
+}
+
+/* entry field */
+#afterepoch
+{
+  text-align: center;
+  border: rgba(224, 119, 70, 1) 2px solid;
+  word-wrap: break-word;
+  color: red;
+  background-color: purple;
+}
+
+
+/* search button on index */
+.searchbar
+{
+  display: flex;
+  text-align: center;
+  border: rgba(224, 119, 70, 1) 2px solid;
+  word-wrap: break-word;
+  color: white;
+  background-color: red;
+  justify-content: center;
+
+
+/*
+  display: flex;
+  border: rgba(224, 119, 70, 1) 2px solid;
+  color: white;
+  background-color: red;
+
+  align-items: center;
+
+  border: none;
+  vertical-align: top;
+  */
+}
+
+/* search results header row */
+tr.searchheader
+{
+  text-align: center;
+  border: rgba(224, 119, 70, 1) 2px solid;
+  word-wrap: break-word;
+  color: white;
+  background-color: black;
+}
+
+/* search results data rows */
+tr.datas{
+  text-align: center;
+  border: rgba(224, 119, 70, 1) 1px solid;
+  word-wrap: break-word;
+  color: black;
+  background-color: white;
+}
+
+td.maccol{
+  width: 15%;
+  padding: 5px 5px 5px 5px;
+}
+td.typecol{
+  width: 10%;
+}
+td.phynamecol{
+  width: 10%;
+}
+td.lastcol{
+  width: 10%;
+}
+td.bssidcol{
+  width: 15%;
+}
+td.encryptcol{
+  width: 10%;
+}
+td.channelcol{
+  width: 10%;
+}
+td.signalcol{
+  width: 10%;
+}
+
+/*
+
+table.classname td
+{
+  text-align: center;
+  border: rgba(224, 119, 70, 1) 2px solid;
+  word-wrap: break-word;
+  color: black;
+  background-color: gray;
+}
+
+
+
+
 table#close{
 
-	table-layout:default;
-	border-collapse:seperate;
-	border-spacing: 5px 5px;
-	border:none;
-	vertical-align:top;
+  table-layout: default;
+  border-collapse: seperate;
+  border-spacing: 5px 5px;
+  border: none;
+  vertical-align: top;
+  color: white;
+  background-color: purple;
 }
-table.none
+table#close searchbar
 {
-	border:none;
-	vertical-align:top;
+  border: none;
+  vertical-align: top;
+  color: white;
+  background-color: red;
 }
+
+*/
+
+
+/*
+machead
+{
+  text-align: center;
+  border: rgba(224, 119, 70, 1) 2px solid;
+  word-wrap: break-word;
+  color: white;
+  background-color: black;
+
+}
+
+
 table.none td
 {
-	border: none;
+  border: none;
 }
 tr.row td{
-	text-decoration:italic;
+    background-color: #333;
+    text-decoration: italic;
+    color: white;
+    text-align: center;
+    display: block;
 }
-th.status{
-	width:5%;
+th.maccol{
+    width: 25%;
+    padding: 5px 5px 5px 5px;
 }
-th.name{
-	width:20%;
+
+th.ssidcol{
+    width: 25%;
 }
-th.des{
-	width:40%;
-	padding:5px 5px 5px 5px;
+th.bssidcol{
+    width: 25%;
 }
-th.date{
-	width:8%;
+th.encryptcol{
+    width: 5%;
 }
-th.pr{
-	width:7%;
+
+th.channelcol{
+    width: 3%;
 }
-th.func1{
-	width:6%;
+th.signalcol{
+    width: 3%;
 }
-th.func2{
-	width:5%;
-}
+
+*/
 input[type=submit] {
     width: 20em;  height: 2em;
 }
@@ -84,7 +222,7 @@ a.active {
     background-color: #4CAF50;
 }
 /* Change the link color to #111 (black) on hover */
-li a:hover {
+li a: hover {
     background-color: #111;
 }
 
