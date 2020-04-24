@@ -10,10 +10,13 @@ import pytz # $ pip install pytz
 from tzlocal import get_localzone
 
 app = Flask(__name__)
+
 title = "Kismet/MonggDB MAC Search"
 heading = "MAC Search"
+local_tz = get_localzone()
+time_format = "%Y-%m-%d %H:%M:%S"
 
-client = MongoClient("mongodb://192.168.100.243:27017") #host uri
+client = MongoClient("mongodb://192.168.1.243:27017") #host uri
 db = client["HEO_DB"]  #Select the database
 devices = db["kismetDot11"] #Select the collection name
 
@@ -92,6 +95,22 @@ def action3 ():
     devices.update({"_id":ObjectId(id)}, {'$set':{ "name":name, "desc":desc, "date":date, "pr":pr }})
     return redirect("/")
 
+def date_to_epoch(the_datetime_t):
+    try:
+        the_datetime_out = datetime(*[int(v) for v in the_datetime_t.replace('T', '-').replace(':', '-').split('-')])
+        the_naive = datetime.strptime (str(the_datetime_out), time_format)
+        the_local = local_tz.localize(the_naive, is_dst=None)
+        the_utc = the_local.astimezone(pytz.utc)
+        the_epoch_t = the_utc.strftime("%s")
+        print("_OUT: ",the_datetime_out)
+        print("_NAIVE: ",the_naive)
+        print("_UTC: ",the_utc)
+        print("_EPOCH: ",the_epoch_t)
+        return(the_epoch_t)
+    except Exception as e:
+        print("Error converting to Epoch: ",e)
+        return(None)
+
 @app.route("/search", methods=['GET'])
 def search():
     #Searching a Task with various references
@@ -104,21 +123,39 @@ def search():
     the_mac=request.values.get("macaddr")
     afterepoch = 0
     beforeepoch = time.time()
+    aftertime_t = None
+    beforetime_t = None
     
-    ts = time.time()
-    utc_now, now = datetime.utcfromtimestamp(ts), datetime.fromtimestamp(ts)
+    afterdatetime_t = request.values.get("afterdatetime")
+    beforedatetime_t = request.values.get("beforedatetime")
+
+    print("_T AFTER: ",afterdatetime_t,": BEFORE : ",beforedatetime_t)
     
-    print(utc_now,now)
+    # 2020-04-23T19:30
     
-    afterepoch_t=int(request.values.get("afterepoch"))
-    beforeepoch=int(request.values.get("beforeepoch"))
+    beforeepoch_t = date_to_epoch(beforedatetime_t)
+    afterepoch_t = date_to_epoch(afterdatetime_t)
+
+
+    '''
+    afterdate_t=request.values.get("afterdate")
+    aftertime_t=request.values.get("aftertime")
+
+    beforedate_t=request.values.get("beforedate")
+    beforetime_t=request.values.get("beforetime")
+
+    print("AFTER: ",afterdate_t,":: ",aftertime_t," BEFORE: ",beforedate_t,":: ",beforetime_t)
+
+    #afterepoch_utc = local_datetime.astimezone(afterepoch_t.utc)   
+    print(afterepoch_out,"-->",beforeepoch_out)
+    '''
     try:
-        afterepoch_t=int(request.values.get("afterepoch"))
+        afterepoch=int(afterepoch_t)
     except Exception as e:
         print(request.values.get("afterepoch"),": ",e,"  Default to 0")
         
     try:
-        beforeepoch=int(request.values.get("beforeepoch"))
+        beforeepoch=int(beforeepoch_t)
     except Exception as e:
         print(request.values.get("beforeepoch"),": ",e,"  Default to time()")
         
@@ -136,12 +173,14 @@ def search():
     for mac in devices_l:
         #print(mac)
         mac_entry = {}
+        lastepoch = int(mac["Data"]["kismet_device_base_last_time"])
+        lastdatetime = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(lastepoch))
         mac_entry = { 
             "bssid" : "-",
             "channel" : mac["Data"]["kismet_device_base_channel"] , 
             "commonname" : mac["Data"]["kismet_device_base_commonname"],
             "encrypt" : mac["Data"]["kismet_device_base_crypt"] , 
-            "lastseen" : mac["Data"]["kismet_device_base_last_time"] , 
+            "lastseen" : lastdatetime,
             "macaddr" : mac["Data"]["kismet_device_base_macaddr"] , 
             "manuf" : mac["Data"]["kismet_device_base_manuf"],
             "phyname" : mac["Data"]["kismet_device_base_phyname"],

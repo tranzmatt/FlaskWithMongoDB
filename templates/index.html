@@ -1,28 +1,38 @@
-<html>
+<!DOCTYPE html>
     <head>
         <title>{{t}}</title>
         <link rel="stylesheet" type="text/css"  href="{{ url_for('static',filename='assets/style.css')}}" >
         <link rel="stylesheet" type="text/css"  href="{{ url_for('static',filename='assets/emoji.css')}}" >
         <link rel="stylesheet" type="text/css"  href="{{ url_for('static',filename='assets/bootstrap.min.css')}}" >
         <link rel="stylesheet" type="text/css"  href="{{ url_for('static',filename='assets/tabulator_midnight.min.css')}}" >
-        <script src="{{ url_for('static',filename='assets/twemoji.min.js')}}"></script>  
+        <script src="{{ url_for('static',filename='assets/twemoji.min.js')}}"></script>
         <script src="{{ url_for('static',filename='assets/emoji.js')}}"></script>
     </head>
     <body>
     <h1>{{h}}</h1>
     <hr>
-    <div span="right">
-        <form action="/search"    method="GET" >
-            <table class="inputarea" id="inputarea" ><tr>
-                <div>
-                    <label for="macaddr"><strong>MAC:</strong></label><input name="macaddr" class="macaddr" type="text">
-                    <label for="afterepoch"><strong>After Epoch:</strong></label><input name="afterepoch" class="afterepoch" type="datetime-local">
-                    <label for="beforeepoch"><strong>Before Epoch:</strong></label><input name="beforeepoch" class="beforeepoch" type="datetime-local">
-                </div>
-            </tr></table>
-            <table class="searchbar">
-                <tr>><button type="submit">Search</button></tr>
-            </table>
+    <div>
+        <form action="/search"  method="GET" >
+            <div class="inputarea" >
+                <label class="inputlabel" style="padding-left: 0px;" for="macaddr"><strong>MAC: </strong></label>
+                <input name="macaddr" class="macinput" type="text">
+                <label class="inputlabel" for="afterepoch"><strong>After: </strong></label>
+                <!--                
+                <input name="afterdate" class="timeinput" type="date">
+                <input name="aftertime" class="timeinput" type="time" step="2">
+                -->
+                <input name="afterdatetime" class="timeinput" type="datetime-local" step="2">
+
+                <label class="inputlabel" for="beforeepoch"><strong>Before: </strong></label>
+                <!--
+                <input name="beforedate" class="timeinput" type="date">
+                <input name="beforetime" class="timeinput" type="time" step="2">
+                -->
+                <input name="beforedatetime" class="timeinput" type="datetime-local" step="2">
+            </div>
+            <div class="searchbar" >
+                    <button type="submit">Search</button>
+            </div>
         </form>
     </div>
 </body>

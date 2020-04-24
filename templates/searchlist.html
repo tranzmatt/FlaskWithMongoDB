@@ -2,10 +2,11 @@
 	<head>
 		<title>{{t}}</title>
         <link rel="stylesheet" type="text/css"  href="{{ url_for('static',filename='assets/style.css')}}" >
-		<link rel="stylesheet" type="text/css"  href="{{ url_for('static',filename='assets/emoji.css')}}" >
-		<link rel="stylesheet" type="text/css"  href="{{ url_for('static',filename='assets/bootstrap.min.css')}}" >
-		<link rel="stylesheet" type="text/css"  href="{{ url_for('static',filename='assets/tabulator_midnight.min.css')}}" >
-	</head>
+        <link rel="stylesheet" type="text/css"  href="{{ url_for('static',filename='assets/emoji.css')}}" >
+        <link rel="stylesheet" type="text/css"  href="{{ url_for('static',filename='assets/bootstrap.min.css')}}" >
+        <link rel="stylesheet" type="text/css"  href="{{ url_for('static',filename='assets/tabulator_midnight.min.css')}}" >
+        <script src="{{ url_for('static',filename='assets/twemoji.min.js')}}"></script>
+        <script src="{{ url_for('static',filename='assets/emoji.js')}}"></script>	</head>
 <body>
 	<h1>{{h}}</h1>
 	<hr>

@@ -1,6 +1,7 @@
 h1{
 /*  font-family: "Arial Black", Gadget, sans-serif;*/
   font-family: "Times New Romans", Gadget, sans-serif;
+  text-align: center; 
 }
 body{
   color: black;
@@ -8,68 +9,55 @@ body{
   left-margin: 10px;
   right-margin: 10px;
 }
-table{
-  width: 95%;
-  border-collapse: collapse;
-  table-layout: auto;
-}
-
-
 .inputarea
 {
   display: flex;
-  text-align: center;
+  /*text-align: center;*/
   border: rgba(224, 119, 70, 1) 2px solid;
   word-wrap: break-word;
   color: white;
   background-color: green;
   justify-content: center;
+  vertical-align: center;
 }
 
-
-.afterepoch
+.inputlabel
 {
-  text-align: center;
-  border: rgba(224, 119, 70, 1) 2px solid;
-  word-wrap: break-word;
-  color: white;
-  background-color: blue;
+  padding: 3px 5px 0px 20px;
 }
 
 /* entry field */
-#afterepoch
+.macinput
 {
-  text-align: center;
   border: rgba(224, 119, 70, 1) 2px solid;
-  word-wrap: break-word;
-  color: red;
-  background-color: purple;
+  text-align: left;
+  vertical-align: center;
+  padding-bottom: 5px;
 }
-
-
+.timeinput
+{
+  border: rgba(224, 119, 70, 1) 2px solid;
+  text-align: left; 
+  vertical-align: center;
+  padding-bottom: 5px;
+}
 /* search button on index */
 .searchbar
 {
-  display: flex;
+/*  display: flex; */
   text-align: center;
   border: rgba(224, 119, 70, 1) 2px solid;
   word-wrap: break-word;
   color: white;
   background-color: red;
   justify-content: center;
+}
 
-
-/*
+table{
   display: flex;
-  border: rgba(224, 119, 70, 1) 2px solid;
-  color: white;
-  background-color: red;
-
-  align-items: center;
-
-  border: none;
-  vertical-align: top;
-  */
+  width: 95%;
+  border-collapse: collapse;
+  table-layout: auto;
 }
 
 /* search results header row */
