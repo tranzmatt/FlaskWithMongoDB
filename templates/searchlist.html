@@ -1,46 +1,52 @@
 <html>
-	<head>
-		<title>{{t}}</title>
-        <link rel="stylesheet" type="text/css"  href="{{ url_for('static',filename='assets/style.css')}}" >
-        <link rel="stylesheet" type="text/css"  href="{{ url_for('static',filename='assets/emoji.css')}}" >
-        <link rel="stylesheet" type="text/css"  href="{{ url_for('static',filename='assets/bootstrap.min.css')}}" >
-        <link rel="stylesheet" type="text/css"  href="{{ url_for('static',filename='assets/tabulator_midnight.min.css')}}" >
-        <script src="{{ url_for('static',filename='assets/twemoji.min.js')}}"></script>
-        <script src="{{ url_for('static',filename='assets/emoji.js')}}"></script>	</head>
-<body>
-	<h1>{{h}}</h1>
-	<hr>
-	{% if devices[0] %}
-	<h3>Search Results:</h3>
-	<table>
-	    <tr class="searchheader" id="searchheader" >
-	    	<th>MAC</th>
-	    	<th>Type</th>
-            <th>PhyName</th>
-	    	<th>Last Seen</th>
-	    	<th>BSSID</th>
-	    	<th>Encryption</th>
-	    	<th>Channel</th>
-	    	<th>Signal</th>
-	    </tr>
-		{% for device in devices %}
-		<tr class="datas">
-			<!-- <td><a href="./done?_id={{ device['_id'] }}"><input type="image" src="static/images/{{device['done']}}.png" alt="Submit ME"></a></td> -->
-			<td class="maccol">{{ device["macaddr"] }}</td>
-			<td class="typecol">{{ device["type"] }}</td>
-			<td class="phynamecol">{{ device["phyname"] }}</td>
-			<td class="lastcol">{{ device["lastseen"] }}</td>
-			<td class="bssidcol">{{ device["bssid"] }}</td>
-			<td class="encryptcol">{{ device["encrypt"] }}</td>
-			<td class="channelcol">{{ device["channel"] }}</td>
-			<td class="signalcol">{{ device["signal"] }}</td>
-		</tr>
-		{% endfor %}
-	</table>
-	{% else %}
-		<h4>No Result Found !!</h4>
-	{% endif %}
-	</table>
-	<a href="/">Return to TaskList</a>
-</body>
+    <head>
+        <title>{{t}}</title>
+            <link rel="stylesheet" type="text/css"  href="{{ url_for('static',filename='assets/style.css')}}" >
+            <link rel="stylesheet" type="text/css"  href="{{ url_for('static',filename='assets/emoji.css')}}" >
+            <link rel="stylesheet" type="text/css"  href="{{ url_for('static',filename='assets/bootstrap.min.css')}}" >
+            <link rel="stylesheet" type="text/css"  href="{{ url_for('static',filename='assets/tabulator_midnight.min.css')}}" >
+            <script src="{{ url_for('static',filename='assets/twemoji.min.js')}}"></script>
+            <script src="{{ url_for('static',filename='assets/emoji.js')}}"></script>
+        </head>
+    <body>
+        <h1>{{h}}</h1>
+        <div style="display=inline-block; width=95%;">
+            <h3>
+                <div style="float:left; padding:1% 0% 1% 5%;" >Search Results:</div>
+                <div style="float:right; padding: 1% 5% 1% 0%;" ><a href="/">Return to Search</a></div>
+            </h3>
+        </div>
+        <hr>
+            {% if devices[0] %}
+            <table>
+                <tr class="searchheader" id="searchheader" >
+                    <th>MAC</th>
+                    <th>Type</th>
+                        <th>PhyName</th>
+                    <th>BSSID</th>
+                    <th>Encryption</th>
+                    <th>Channel</th>
+                    <th>Signal</th>
+                    <th>Last Seen</th>
+                </tr>
+                {% for device in devices %}
+                <tr class="datas">
+                    <!-- <td><a href="./done?_id={{ device['_id'] }}"><input type="image" src="static/images/{{device['done']}}.png" alt="Submit ME"></a></td> -->
+                    <td class="maccol">{{ device["macaddr"] }}</td>
+                    <td class="typecol">{{ device["type"] }}</td>
+                    <td class="phynamecol">{{ device["phyname"] }}</td>
+                    <td class="bssidcol">{{ device["bssid"] }}</td>
+                    <td class="encryptcol">{{ device["encrypt"] }}</td>
+                    <td class="channelcol">{{ device["channel"] }}</td>
+                    <td class="signalcol">{{ device["signal"] }}</td>
+                    <td class="lastcol">{{ device["lastseen"] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% else %}
+                <h4>No Result Found !!</h4>
+            {% endif %}
+            </table>
+        </hr>
+    </body>
 </html>

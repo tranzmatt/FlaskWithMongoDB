@@ -54,8 +54,7 @@ body{
 }
 
 table{
-  display: flex;
-  width: 95%;
+  width: 100%;
   border-collapse: collapse;
   table-layout: auto;
 }
@@ -65,7 +64,6 @@ tr.searchheader
 {
   text-align: center;
   border: rgba(224, 119, 70, 1) 2px solid;
-  word-wrap: break-word;
   color: white;
   background-color: black;
 }
@@ -74,14 +72,11 @@ tr.searchheader
 tr.datas{
   text-align: center;
   border: rgba(224, 119, 70, 1) 1px solid;
-  word-wrap: break-word;
-  color: black;
-  background-color: white;
 }
 
 td.maccol{
   width: 15%;
-  padding: 5px 5px 5px 5px;
+  padding: 0px 2px 0px 2px;
 }
 td.typecol{
   width: 10%;
@@ -89,22 +84,23 @@ td.typecol{
 td.phynamecol{
   width: 10%;
 }
-td.lastcol{
-  width: 10%;
-}
 td.bssidcol{
   width: 15%;
+  padding: 0px 2px 0px 2px;
 }
 td.encryptcol{
   width: 10%;
 }
 td.channelcol{
-  width: 10%;
+  width: 5%;
 }
 td.signalcol{
-  width: 10%;
+  width: 5%;
 }
-
+td.lastcol{
+  width: 20%;
+  white-space: pre;
+}
 /*
 
 table.classname td
